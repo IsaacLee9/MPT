@@ -1,48 +1,39 @@
 #include <iostream>
 
 using namespace std;
-int ans=0;
-int x;
-void recur(int l[], int c,int total);
+
 int main()
 {
-    int n;
-    int c;
-    cin>>n;
-    cin>>c;
-    int l[c];
-
-
-    for(int i=0;i<c;i++)
-    {
-        cin>>l[i];
-    }
-
-
-
-
-    recur(l,c,n);
-    cout<<ans/c<<endl;
-
-
-}
-
-void recur(int l[], int c,int total)
-{
-    for(int i=0;i<c;i++)
+    int matrix1[3][3] = {{1,2,3},
+                        {4,5,6},
+                        {7,8,9}};
+    int matrix2[3][3] = {{1,2,3},
+                        {4,5,6},
+                        {7,8,9}};
+    int matrixAns[3][3];
+    for(int q=0;q<3;q++)
     {
 
-        if(total==0)
-        {
 
-
-            ans+=1;
-        }else if(total<0)
+        for(int i=0;i<3;i++)
         {
-            x=0;
-        }else{
-            int yeet=total-l[i];
-            recur(l,c,yeet);
+            int sum1=0;
+            for(int j=0;j<3;j++)
+            {
+               sum1+=matrix1[q][j]*matrix2[j][i] ;
+            }
+            matrixAns[q][i]=sum1;
+
         }
+    }
+    for(int q=0;q<3;q++)
+    {
+
+
+        for(int i=0;i<3;i++)
+        {
+            cout<<matrixAns[q][i]<< " ";
+        }
+        cout<<endl;
     }
 }
