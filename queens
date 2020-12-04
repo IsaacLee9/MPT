@@ -1,0 +1,78 @@
+#include <iostream>
+//very slow takes a very long itme for inputs > 10
+using namespace std;
+int ans=0;
+int queens(int n,int placed,int x[],int y[]);
+int check(int n,int placed,int x[],int y[],int x1, int y1);
+
+int main()
+{
+    int n;
+    cin>>n;
+    int x[n];
+    int y[n];
+    int work=0;
+    queens(n,work,x,y);
+
+
+    cout<<ans<<endl;
+}
+
+int queens(int n,int placed,int x[],int y[])
+{
+    if(placed==n)
+    {
+        ans++;
+        for(int i=0;i<placed;i++)
+        {
+
+        }
+    }
+
+
+        for(int j=0;j<n;j++)
+        {
+
+                int new1=check(n,placed,x,y,placed,j);
+
+            if(new1>placed)
+            {
+
+                x[placed]=placed;
+                y[placed]=j;
+                queens(n,placed+1,x,y);
+            }
+
+
+
+
+        }
+
+
+
+
+}
+int check(int n,int placed,int x[],int y[],int x1, int y1)
+{
+    int check=0;
+    for(int i=0;i<placed;i++)
+    {
+        if(y[i]-x[i]==y1-x1||y[i]+x[i]==x1+y1)
+        {
+
+                check++;
+
+
+        }else if(y1==y[i]||x1==x[i]){
+
+            check++;
+        }
+    }
+    if(check==0)
+    {
+        placed++;
+    }
+    return placed;
+}
+
+
